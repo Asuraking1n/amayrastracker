@@ -1,0 +1,21 @@
+.habit-cont{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+.habitside-sec{
+    min-width: calc(100vw - 20rem);
+    max-width: auto;
+    height: 100%;
+}
+
+
+
+
+@media (max-width: 480px)  {
+    .habitside-sec{
+        min-width: calc(100vw - 3rem);
+        max-width: auto;
+        height: 100%;
+    }
+}
