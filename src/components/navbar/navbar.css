@@ -14,7 +14,9 @@
     justify-content: space-between;
     color: #3b3737;
 }
-
+#link{
+    text-decoration: none;
+}
 .nav-logo-container img{
     height: 60%;
     width: 4rem;
