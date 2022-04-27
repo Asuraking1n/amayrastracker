@@ -44,7 +44,14 @@
     height: 1.5rem;
     margin: 0 1rem;
 }
-
+.motivatinal-quotes{
+    margin-top: 8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #2458D1;
+    text-align: center;
+}
 @media (max-width:480px) {
     .sidebar-container{
         width: 3rem;

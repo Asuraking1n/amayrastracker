@@ -43,7 +43,6 @@ const restoreHabit=async()=>{
             <div className="card-btn-sec">
             <button onClick={dltHabit}>Delete</button>
             <button onClick={restoreHabit}>Restore</button>
-            <button>Add to Label</button>
             </div>
         </div>
     </>

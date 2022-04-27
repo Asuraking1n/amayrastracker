@@ -85,11 +85,18 @@
     border: 1px solid black;
     border-radius: 20px;
 }
+.stats-cont{
+    display: flex;
+}
 @media (min-width: 481px) and (max-width: 810px){
     .card-btn-sec button{
         min-width: 5rem;
         height: 2rem;
         font-size: .6rem;
+    }
+    .pomodoro button{
+        width: 3rem;
+        border-radius: 0;
     }
 }
 
@@ -103,4 +110,8 @@
     .card-user-name{
         width: 40%;
     }
+    .stats-cont{
+        display: none;
+    }
+    
 }
