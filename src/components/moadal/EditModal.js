@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { useHabit } from "../../context/habit-context";
 import "./modal.css";
-const Moadal = (props) => {
+const EditModal = (props) => {
     const [habitData, setHabitData] = useState({
         name: '',
         date: '',
@@ -15,19 +15,20 @@ const Moadal = (props) => {
         let val = e.target.value
         setHabitData({ ...habitData, [name]: val })
     }
-    const addHabit=async(habitData,token)=>{
-        const res = await axios.post('/api/habits',{habit: habitData},{
+
+    const upDateHabit=async(habit,token)=>{
+        const res = await axios.post(`/api/habits/${props.id}`,{ habit },{
             headers: {
                 authorization: token 
             }
         })
         if(res.status===200){
-        setHabitDataSet(res.data.habits)
-        props.openModal(false)
+          setHabitDataSet(res.data.habits);
+          props.IsopenModal(false)
         }else{
             alert('error')
         }
-    }
+      }
     return (
         <>
             <div className="habit-modal-cont">
@@ -46,9 +47,9 @@ const Moadal = (props) => {
                         <input type="text" placeholder="You can do it" name="reminder" onChange={HandelFormData} />
                     </div>
 
-                    <div className="modal-btn-sec">
-                        <button onClick={() => props.openModal(false)}>Cancel</button>
-                        <button onClick={()=>addHabit(habitData,token)}>Save</button>
+                    <div className="modal-btn-sec edit-sec">
+                        <button onClick={() => props.IsopenModal(false)}>Cancel</button>
+                        <button onClick={()=>upDateHabit(habitData,token)}>Update</button>
                     </div>
                 </div>
             </div>
@@ -56,4 +57,4 @@ const Moadal = (props) => {
     );
 };
 
-export default Moadal;
+export default EditModal;
