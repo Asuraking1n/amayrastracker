@@ -2,7 +2,6 @@ import React from 'react'
 import './sidebar.css'
 import Habit from '../../images/habit.png'
 import Archive from '../../images/archive.png'
-import Label from '../../images/label.png'
 import Logout from '../../images/logout.png'
 import { useNavigate } from 'react-router-dom'
 const Sidebar = () => {
