@@ -7,6 +7,7 @@
     min-width: calc(100vw - 20rem);
     max-width: auto;
     height: 100%;
+    overflow: scroll;
 }
 .blank-div{
     height: 100%;

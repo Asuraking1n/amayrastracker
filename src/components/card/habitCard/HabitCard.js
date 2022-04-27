@@ -3,10 +3,23 @@ import axios from 'axios'
 import { useHabit } from '../../../context/habit-context'
 import './habitCard.css'
 import EditModal from '../../moadal/EditModal'
+import { useStopwatch } from 'react-timer-hook';
 const HabitCard = (props) => {
   const [ openModal,setOpenModal] = useState(false)
   const {setArchiveDataSet,setHabitDataSet} = useHabit()
   const token  = localStorage.getItem('token')
+
+
+  const {
+    seconds,
+    minutes,
+    hours,
+    days,
+    isRunning,
+    start,
+    pause,
+    reset,
+  } = useStopwatch({ autoStart: false });
 
   const addtoArchive=async(id,token)=>{
     const res = await axios.post(`/api/archives/${id}`,{  },{
@@ -55,6 +68,7 @@ const HabitCard = (props) => {
 
   return (
     <>
+        <div className="habit-cont-sec">
         <div className="habit-card-sec">
             <div className="card-profile">
             <img src="https://c.tenor.com/ZxaSEXL0wB4AAAAM/cartoon-monkey.gif" alt="profile" />
@@ -71,6 +85,16 @@ const HabitCard = (props) => {
             {openModal&&<EditModal IsopenModal={(openModal)=>setOpenModal(openModal)} id={props.data._id}/>}
             
             </div>
+        </div>
+        <div className='pomodoro'>
+      <div className='pomodoro-timer'>
+        <span>{days}</span>:<span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
+      </div>
+      <p>{isRunning ? 'Running' : 'Not running'}</p>
+      <button onClick={start}>Start</button>
+      <button onClick={pause}>Pause</button>
+      <button onClick={reset}>Reset</button>
+    </div>
         </div>
     </>
   )
