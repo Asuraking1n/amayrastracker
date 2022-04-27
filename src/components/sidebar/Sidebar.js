@@ -3,9 +3,15 @@ import './sidebar.css'
 import Habit from '../../images/habit.png'
 import Archive from '../../images/archive.png'
 import Label from '../../images/label.png'
+import Logout from '../../images/logout.png'
 import { useNavigate } from 'react-router-dom'
 const Sidebar = () => {
   const navigate =  useNavigate()
+  let token = localStorage.getItem('token')
+  const logoMeOut=()=>{
+    localStorage.removeItem('token')
+    navigate('/')
+  }
   return (
     <>
         <div className="sidebar-container">
@@ -27,6 +33,11 @@ const Sidebar = () => {
                 <img src={Label} alt="icon" />
                 <div>Labels</div>
                 </span>
+                {token&&<span onClick={logoMeOut}>
+                <img src={Logout} alt="icon" />
+                <div>Logout</div>
+                </span>}
+                
             </div>
         </div>
     </>

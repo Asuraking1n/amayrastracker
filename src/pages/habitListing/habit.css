@@ -8,7 +8,20 @@
     max-width: auto;
     height: 100%;
 }
-
+.blank-div{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+.blank-div span{
+    cursor: pointer;
+}
 
 
 
