@@ -3,15 +3,12 @@ import {useNavigate} from 'react-router-dom'
 import ArchiveCard from '../../components/card/archiveCard/ArchiveCard'
 import HabitNav from '../../components/HabitNavbar/HabitNav'
 import Sidebar from '../../components/sidebar/Sidebar'
-import { useHabit } from '../../context/habit-context'
 import { useSelector } from 'react-redux'
 import './habit.css'
 const ArchiveList = () => {
   const navigate = useNavigate()
-  const {archiveDataSet} = useHabit()
   const archiveData = useSelector(state=>state.habitData.archives)
   const token = localStorage.getItem('token')
-  console.log(archiveData);
   return (
     <>
     <div className="habit-cont">
@@ -20,7 +17,7 @@ const ArchiveList = () => {
         
         {token?<>
           <HabitNav title={"Archive Section"}/>
-        {archiveData.length < 1 ?
+        {archiveData.length < 1 || archiveData[0].length< 1 ?
               <div className='no-data-text'>
               <img src="https://theme.zdassets.com/theme_assets/643319/620072a09e8f5a5461c6048e9a089050f63892d5.gif" alt="nodata" />
                 No Habbits in Acrhive Yet

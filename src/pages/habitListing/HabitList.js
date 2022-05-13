@@ -9,6 +9,7 @@ const HabitList = () => {
   const navigate = useNavigate()
   const token = localStorage.getItem('token')
   const habitDataList = useSelector((state)=>state.habitData.habits)
+
   return (
     <>
       <div className="habit-cont">
@@ -16,7 +17,7 @@ const HabitList = () => {
         <div className="habitside-sec">
           {token ? <>
             <HabitNav title={"Habit Section"} /> 
-            {habitDataList.length < 1 ?
+            {habitDataList.length < 1 || habitDataList[0].length< 1?
               <div className='no-data-text'>
               <img src="https://theme.zdassets.com/theme_assets/643319/620072a09e8f5a5461c6048e9a089050f63892d5.gif" alt="nodata" />
                 No Habbits Yet, Add Brand New Habbits
