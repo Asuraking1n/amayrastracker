@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import { useHabit } from '../../../context/habit-context'
+import { useDispatch } from 'react-redux'
+import { addhabit,addarchive } from '../../../redux/reducers/HabitSlice'
 const ArchiveCard = (props) => {
-  const {setArchiveDataSet,setHabitDataSet} = useHabit()
+  const dispatch = useDispatch()
   const token  = localStorage.getItem('token')
   
   const dltHabit=async()=>{
@@ -12,7 +13,7 @@ const ArchiveCard = (props) => {
         }
     })
     if(res.status===200){
-      setArchiveDataSet(res.data.archives);
+      dispatch(addarchive(res.data.archives))
     }else{
         alert('error')
     }
@@ -25,8 +26,8 @@ const restoreHabit=async()=>{
       }
   })
   if(res.status===200){
-    setArchiveDataSet(res.data.archives);
-    setHabitDataSet(res.data.habits)
+    dispatch(addarchive(res.data.archives))
+    dispatch(addhabit(res.data.habits))
   }else{
       alert('error')
   }
@@ -38,7 +39,8 @@ const restoreHabit=async()=>{
             <img src="https://c.tenor.com/ZxaSEXL0wB4AAAAM/cartoon-monkey.gif" alt="profile" />
             </div>
             <div className="card-user-name">
-            <span>Wake early</span>
+            <span>{props.data.name}</span>
+            <span>{props.data.reminder}</span>
             </div>
             <div className="card-btn-sec">
             <button onClick={dltHabit}>Delete</button>

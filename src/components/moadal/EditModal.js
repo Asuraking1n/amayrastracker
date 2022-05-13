@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import { useHabit } from "../../context/habit-context";
+import { addhabit } from "../../redux/reducers/HabitSlice";
+import { useDispatch } from "react-redux";
 import "./modal.css";
 const EditModal = (props) => {
+    const dispatch = useDispatch()
     const [habitData, setHabitData] = useState({
         name: '',
         date: '',
         reminder: '',
     })
-    const {setHabitDataSet} = useHabit()
     const token  = localStorage.getItem('token')
     const HandelFormData = (e) => {
         let name = e.target.name
@@ -23,7 +24,7 @@ const EditModal = (props) => {
             }
         })
         if(res.status===200){
-          setHabitDataSet(res.data.habits);
+          dispatch(addhabit(res.data.habits))
           props.IsopenModal(false)
         }else{
             alert('error')

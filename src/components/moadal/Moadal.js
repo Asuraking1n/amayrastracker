@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import { useHabit } from "../../context/habit-context";
 import "./modal.css";
+import { useDispatch } from "react-redux";
+import { addhabit } from "../../redux/reducers/HabitSlice";
 const Moadal = (props) => {
+    const dispatch = useDispatch()
     const [habitData, setHabitData] = useState({
         name: '',
         date: '',
         reminder: '',
     })
-    const {setHabitDataSet} = useHabit()
     const token  = localStorage.getItem('token')
     const HandelFormData = (e) => {
         let name = e.target.name
@@ -22,7 +23,7 @@ const Moadal = (props) => {
             }
         })
         if(res.status===200){
-        setHabitDataSet(res.data.habits)
+        dispatch(addhabit(res.data.habits))
         props.openModal(false)
         }else{
             alert('error')

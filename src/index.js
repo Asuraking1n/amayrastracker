@@ -4,15 +4,16 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import {HabitProvider} from './context/habit-context'
+import { Provider } from 'react-redux'
+import {store} from './redux/store'
 // Call make Server
 makeServer();
 ReactDOM.render(
   <React.StrictMode>
   <BrowserRouter>
-  <HabitProvider>
+  <Provider store={store}>
     <App />
-    </HabitProvider>
+  </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
