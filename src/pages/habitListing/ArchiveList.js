@@ -3,9 +3,11 @@ import {useNavigate} from 'react-router-dom'
 import ArchiveCard from '../../components/card/archiveCard/ArchiveCard'
 import HabitNav from '../../components/HabitNavbar/HabitNav'
 import Sidebar from '../../components/sidebar/Sidebar'
+import { useHabit } from '../../context/habit-context'
 import './habit.css'
 const ArchiveList = () => {
   const navigate = useNavigate()
+  const {archiveDataSet} = useHabit()
   const token = localStorage.getItem('token')
   return (
     <>
@@ -15,7 +17,16 @@ const ArchiveList = () => {
         
         {token?<>
           <HabitNav title={"Archive Section"}/>
-        <ArchiveCard/>
+        {archiveDataSet.length < 1 ?
+              <div className='no-data-text'>
+              <img src="https://theme.zdassets.com/theme_assets/643319/620072a09e8f5a5461c6048e9a089050f63892d5.gif" alt="nodata" />
+                No Habbits in Acrhive Yet
+              </div> :
+              archiveDataSet.map((val,index)=>{
+                return <ArchiveCard key={index} data={val}/>
+              })
+              
+            }
         </>:
         <div className='blank-div'>
           <img src="https://i.pinimg.com/originals/58/22/46/58224674a4868f695d1f0e4ff61bf959.gif" alt="login" />

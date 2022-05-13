@@ -5,6 +5,13 @@
     border: 1px solid beige;
     display: flex;
 }
+.habit-cont-sec{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+    border: 1px solid beige;
+}
 .card-profile{
     height: 100%;
     width: 10%;
@@ -23,7 +30,8 @@
     padding: .5rem;
     letter-spacing: 1px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 .card-btn-sec{
     height: 100%;
@@ -35,6 +43,7 @@
 .card-btn-sec button{
     cursor: pointer;
     margin: 0 1rem;
+    min-height: 3rem;
     padding: .5rem 1rem;
     border: 2px solid #2458D1;
     color: #2458D1;
@@ -49,6 +58,48 @@
     color: #fff;
 }
 
+.pomodoro{
+    text-align: center;
+    width: 20rem;
+    padding: .5rem;
+}
+.pomodoro-timer{
+    font-size: 1.2rem;
+    
+}
+.pomodoro-timer span{
+    background-color: #494949;
+    padding: .5rem .8rem;
+    border-radius: 5px;
+    color: #fff;
+}
+.pomodoro p{
+    margin-top: 10px;
+}
+.pomodoro button{
+    height: 2rem;
+    width: 5rem;
+    margin: 0 10px;
+    background-color: #fff;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+.stats-cont{
+    display: flex;
+}
+@media (min-width: 481px) and (max-width: 810px){
+    .card-btn-sec button{
+        min-width: 5rem;
+        height: 2rem;
+        font-size: .6rem;
+    }
+    .pomodoro button{
+        width: 3rem;
+        border-radius: 0;
+    }
+}
+
 @media (max-width: 480px)  {
     .card-btn-sec{
         display: none;
@@ -59,4 +110,8 @@
     .card-user-name{
         width: 40%;
     }
+    .stats-cont{
+        display: none;
+    }
+    
 }

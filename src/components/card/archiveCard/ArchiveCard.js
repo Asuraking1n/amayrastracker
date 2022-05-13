@@ -1,5 +1,36 @@
 import React from 'react'
-const ArchiveCard = () => {
+import axios from 'axios'
+import { useHabit } from '../../../context/habit-context'
+const ArchiveCard = (props) => {
+  const {setArchiveDataSet,setHabitDataSet} = useHabit()
+  const token  = localStorage.getItem('token')
+  
+  const dltHabit=async()=>{
+    const res = await axios.delete(`/api/archives/${props.data._id}`,{
+        headers: {
+            authorization: token 
+        }
+    })
+    if(res.status===200){
+      setArchiveDataSet(res.data.archives);
+    }else{
+        alert('error')
+    }
+}
+
+const restoreHabit=async()=>{
+  const res = await axios.post(`/api/archives/restore/${props.data._id}`,{},{
+      headers: {
+          authorization: token 
+      }
+  })
+  if(res.status===200){
+    setArchiveDataSet(res.data.archives);
+    setHabitDataSet(res.data.habits)
+  }else{
+      alert('error')
+  }
+}
   return (
     <>
         <div className="habit-card-sec">
@@ -10,8 +41,8 @@ const ArchiveCard = () => {
             <span>Wake early</span>
             </div>
             <div className="card-btn-sec">
-            <button>Remove from Archive</button>
-            <button>Add to Label</button>
+            <button onClick={dltHabit}>Delete</button>
+            <button onClick={restoreHabit}>Restore</button>
             </div>
         </div>
     </>

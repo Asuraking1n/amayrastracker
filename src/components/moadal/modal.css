@@ -11,8 +11,8 @@
 }
 
 .habit-modal-sec{
-    height: 60%;
-    width: 38%;
+    height: 71%;
+    width: 40%;
     background-color: #fff;
     padding: 1rem;
     overflow: hidden;
@@ -51,10 +51,12 @@
     background-color: #f3f2f2;
     margin-top: 5px;
 }
-
+.edit-sec{
+    margin-top: 2rem;
+}
 .modal-btn-sec button{
     height: 2rem;
-    width: 5rem;
+    width: 6rem;
     border-radius: 3px;
     margin-left: 1rem;
     cursor: pointer;
