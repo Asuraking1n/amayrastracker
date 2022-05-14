@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import axios from 'axios'
-import { useHabit } from "../../context/habit-context";
 import "./modal.css";
+import { useDispatch } from "react-redux";
+import { addhabit } from "../../redux/reducers/HabitSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Moadal = (props) => {
+    const dispatch = useDispatch()
     const [habitData, setHabitData] = useState({
         name: '',
         date: '',
         reminder: '',
     })
-    const {setHabitDataSet} = useHabit()
     const token  = localStorage.getItem('token')
+    const notify = () => toast("Some Error Occured, refresh and retry");
     const HandelFormData = (e) => {
         let name = e.target.name
         let val = e.target.value
@@ -22,14 +26,14 @@ const Moadal = (props) => {
             }
         })
         if(res.status===200){
-        setHabitDataSet(res.data.habits)
+        dispatch(addhabit(res.data.habits))
         props.openModal(false)
         }else{
-            alert('error')
+            notify()
         }
     }
     return (
-        <>
+        <><ToastContainer />
             <div className="habit-modal-cont">
                 <div className="habit-modal-sec">
                     <div className="modal-heading">New Habit</div>
