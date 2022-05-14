@@ -13,6 +13,7 @@ const Signup = () => {
         cpass: ''
     })
     const notify = () => toast("password not matched");
+    const notifyAPIerror = () => toast("Got Api Error");
     const dataHandler = (e) => {
         let name = e.target.name
         let value = e.target.value
@@ -30,9 +31,7 @@ const Signup = () => {
                 .then(res => {
                     localStorage.setItem('token', res.data.encodedToken)
                     navigate('/habit-listing')
-                }).catch((e) => () => {
-                    toast("Got Api Error" + "" + e);
-                })
+                }).catch((e) => notifyAPIerror() )
         } else {
             notify()
         }
