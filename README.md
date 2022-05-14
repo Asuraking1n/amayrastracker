@@ -1,70 +1,137 @@
-# Getting Started with Create React App
+<div id="top"></div>
+<!--
+*** Thanks for checking out my Project. If you have a suggestion
+*** that would make this better, please fork the repo and create a pull request
+*** or simply open an issue with the tag "enhancement".
+*** Don't forget to give the project a star!
+*** Thanks again! Now go create something AMAZING! :D
+-->
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+<!-- PROJECT SHIELDS -->
 
-### `yarn start`
+[![LinkedIn][linkedin-shield]](https://www.linkedin.com/in/nishant-kumar-tiwari-253a46196/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  
+![image](https://user-images.githubusercontent.com/47889284/168411287-00ecaa7d-a355-499e-81dd-c237f676a626.png)
+ 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  <h3 align="center">Amayra's Shop</h3>
 
-### `yarn build`
+  <p align="center">
+    An awesome Habbit tracker to track your habits.
+    <br />
+    <a href="https://amayrastracker.netlify.app/"><strong>Explore App »</strong></a>
+    <br />
+    <br />
+    <a href="https://amayrastracker.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/Asuraking1n/amayrastracker/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Asuraking1n/amayrastracker/pulls">Request Feature</a>
+  </p>
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>HomePage</li>
+    <li>Login/Logout</li>
+    <li>Sign Up</li>
+    <li>Add/Edit/Delete Habits</li>
+    <li>Archive/restore habits</li>
+    <li>Pomodoro</li>
+    <li>chart</li>
+    <li>Motivational Quoates</li>
+    <li>Responisve</li>
+  </ol>
+</details>
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- ABOUT THE PROJECT -->
+## About The Project
+![image](https://user-images.githubusercontent.com/47889284/168411352-9e3234ef-3fa1-4eb5-8a24-72c17fe84fa6.png)
+![image](https://user-images.githubusercontent.com/47889284/168411360-d158a648-db63-4155-b69b-e3c000603871.png)
+![image](https://user-images.githubusercontent.com/47889284/168411375-52538b8f-8279-469d-bd0a-dd41a8da2741.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+There are many great Habit trackers ; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a habit tracker that'll be the last one you ever need -- I think this is it.
 
-## Learn More
+Here's why:
+* Your time should be focused on only something you really need. A project that solves a problem and helps others.
+* You shouldn't woory about keeping record of habits.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Of course, no Habit trackers will serve all your needs since your needs may be different. So I'll be adding more features in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have reviewed to expanding this project.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Built With
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* [HTML](https://www.w3schools.com/html/)
+* [CSS](https://www.w3schools.com/css/)
+* [React.js](https://reactjs.org/)
+*[MockBEE](http://mockbee.netlify.app/docs)
 
-### Making a Progressive Web App
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Prerequisites
 
-### `yarn build` fails to minify
+You don't need anything special, just open the link and start tracking habits.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+<!-- ROADMAP -->
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+<!-- LICENSE -->
+
+
+<!-- CONTACT -->
+## Contact
+
+Nishant Kumar Tiwari - [@my_Linkedin](https://www.linkedin.com/in/nishant-kumar-tiwari-253a46196/) - nishant88tiwari@gmail.com
+
+Project Link: [Amayra's Tracker](https://github.com/Asuraking1n/amayrastracker)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
