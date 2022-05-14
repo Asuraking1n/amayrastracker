@@ -107,7 +107,7 @@ const HabitCard = (props) => {
           <button onClick={reset}>Reset</button>
         </div>
         <span>STATS : </span>
-        <LineChart width={300} height={100} data={dataList} style={{zIndex:"0"}}>
+        <LineChart width={300} height={100} data={dataList} style={{zIndex:"-2"}}>
           <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
         </LineChart>
         </div>
