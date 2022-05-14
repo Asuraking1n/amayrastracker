@@ -5,6 +5,8 @@ import EditModal from '../../moadal/EditModal'
 import { useStopwatch } from 'react-timer-hook';
 import { LineChart, Line } from "recharts";
 import { useDispatch } from 'react-redux'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { addhabit,addarchive } from '../../../redux/reducers/HabitSlice'
 const HabitCard = (props) => {
   const [openModal, setOpenModal] = useState(false)
@@ -43,6 +45,7 @@ const HabitCard = (props) => {
     },
   
   ];
+  const notify = () => toast("Some Error Occured, refresh and retry");
   const addtoArchive = async (id, token) => {
     const res = await axios.post(`/api/archives/${id}`, {}, {
       headers: {
@@ -54,7 +57,7 @@ const HabitCard = (props) => {
       dispatch(addarchive(res.data.archives))
       dispatch(addhabit(res.data.habits))
     } else {
-      alert('error')
+      notify()
     }
   }
 
@@ -67,7 +70,7 @@ const HabitCard = (props) => {
     if (res.status === 200) {
       dispatch(addhabit(res.data.habits))
     } else {
-      alert('error')
+      notify()
     }
   }
 
@@ -75,7 +78,7 @@ const HabitCard = (props) => {
 
 
   return (
-    <>
+    <><ToastContainer />
       <div className="habit-cont-sec">
         <div className="habit-card-sec">
           <div className="card-profile">

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from 'axios'
 import { addhabit } from "../../redux/reducers/HabitSlice";
 import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./modal.css";
 const EditModal = (props) => {
     const dispatch = useDispatch()
@@ -16,7 +18,7 @@ const EditModal = (props) => {
         let val = e.target.value
         setHabitData({ ...habitData, [name]: val })
     }
-
+    const notify = () => toast("Some Error Occured, refresh and retry");
     const upDateHabit=async(habit,token)=>{
         const res = await axios.post(`/api/habits/${props.id}`,{ habit },{
             headers: {
@@ -27,11 +29,11 @@ const EditModal = (props) => {
           dispatch(addhabit(res.data.habits))
           props.IsopenModal(false)
         }else{
-            alert('error')
+            notify()
         }
       }
     return (
-        <>
+        <><ToastContainer />
             <div className="habit-modal-cont">
                 <div className="habit-modal-sec">
                     <div className="modal-heading">New Habit</div>

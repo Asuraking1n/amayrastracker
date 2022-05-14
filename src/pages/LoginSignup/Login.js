@@ -3,6 +3,8 @@ import Navbar from '../../components/navbar/Navbar'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import './login.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Login = () => {
     const navigate = useNavigate()
     const [userCred, setUserCred] = useState({
@@ -12,7 +14,8 @@ const Login = () => {
     const dummyUser = {
         email: "nishant@gmail.com",
         pass: "nishant"
-    }
+    } 
+    const notify = () => toast("Some Error Occured, refresh and retry");
     const addDummyUser = (e) => {
         e.preventDefault()
         setUserCred(dummyUser)
@@ -32,12 +35,13 @@ const Login = () => {
                 localStorage.setItem('token', res.data.encodedToken)
                 navigate('/habit-listing')
             })
-            .catch((e) => alert("USER NOT FOUND"))
+            .catch((e) => notify())
 
     }
     return (
         <>
             <Navbar />
+            <ToastContainer />
             <div className="login-cont">
                 <div className="name-cont">
                     <input type="email" placeholder='Enter your Email' value={userCred.email} name='email' onChange={dataHandler} />
