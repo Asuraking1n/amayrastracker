@@ -4,6 +4,7 @@
     margin: 1rem;
     border: 1px solid beige;
     display: flex;
+    
 }
 .habit-cont-sec{
     display: flex;
@@ -11,6 +12,7 @@
     align-items: center;
     margin: 1rem;
     border: 1px solid beige;
+    position: relative;
 }
 .card-profile{
     height: 100%;
@@ -87,6 +89,19 @@
 }
 .stats-cont{
     display: flex;
+}
+.done-overlay{
+    height: 100%;
+    width: 100%;
+    background-color: #ffffffa8;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+.done-overlay span{
+    cursor:pointer;
 }
 @media (min-width: 481px) and (max-width: 810px){
     .card-btn-sec button{
