@@ -39,15 +39,15 @@ const EditModal = (props) => {
                     <div className="modal-heading">New Habit</div>
                     <div className="habit-name">
                         <span>Name</span>
-                        <input type="text" placeholder="Achiver" name="name" onChange={HandelFormData} />
+                        <input type="text" placeholder="Achiver" value={habitData.name||props.data.name} name="name" onChange={HandelFormData} />
                     </div>
                     <div className="habit-name">
                         <span>Goal Start</span>
-                        <input type="date" placeholder="14-04-2022" name="date" onChange={HandelFormData} />
+                        <input type="date" placeholder="14-04-2022" value={habitData.date||props.data.date} name="date" onChange={HandelFormData} />
                     </div>
                     <div className="habit-name">
                         <span>Reminder</span>
-                        <input type="text" placeholder="You can do it" name="reminder" onChange={HandelFormData} />
+                        <input type="text" placeholder="You can do it" value={habitData.reminder||props.data.reminder} name="reminder" onChange={HandelFormData} />
                     </div>
 
                     <div className="modal-btn-sec edit-sec">
