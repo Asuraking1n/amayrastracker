@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { addhabit,addarchive } from '../../../redux/reducers/HabitSlice'
 const HabitCard = (props) => {
   const [openModal, setOpenModal] = useState(false)
-  const [isDone, setIsDone] = useState(false)
+  const [isDone, setIsDone] = useState(false || localStorage.getItem(`${props.data._id}`))
   const token = localStorage.getItem('token')
   const dispatch = useDispatch()
 
@@ -61,6 +61,10 @@ const HabitCard = (props) => {
       notify()
     }
   }
+  const completeHabitHandler=()=>{
+    localStorage.setItem(`${props.data._id}`,true)
+    setIsDone(true)
+  }
 
   const dltHabit = async () => {
     const res = await axios.delete(`/api/habits/${props.data._id}`, {
@@ -81,7 +85,7 @@ const HabitCard = (props) => {
   return (
     <><ToastContainer />
       <div className="habit-cont-sec">
-      <div className="done-overlay" style={{display:!isDone?'none':'block'}}> <span onClick={()=>setIsDone(false)}>X</span> </div>
+      <div className="done-overlay" style={{display:!isDone?'none':'block'}}> <span onClick={()=>setIsDone(false) && localStorage.setItem(`${props.data._id}`,false)}>X</span> </div>
         <div className="habit-card-sec">
           <div className="card-profile">
             <img src="https://c.tenor.com/ZxaSEXL0wB4AAAAM/cartoon-monkey.gif" alt="profile" />
@@ -95,7 +99,7 @@ const HabitCard = (props) => {
             <button onClick={dltHabit}>Delete</button>
             <button onClick={() => setOpenModal(true)}>Edit</button>
             {openModal && <EditModal IsopenModal={(openModal) => setOpenModal(openModal)} data={props.data} id={props.data._id} />}
-            <button onClick={()=>setIsDone(true)}>Done</button>
+            <button onClick={completeHabitHandler}>Done</button>
 
           </div>
         </div>
