@@ -7,7 +7,7 @@ import { LineChart, Line } from "recharts";
 import { useDispatch } from 'react-redux'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { addhabit,addarchive } from '../../../redux/reducers/HabitSlice'
+import { addhabit,addarchive, dltFromHabit } from '../../../redux/reducers/HabitSlice'
 const HabitCard = (props) => {
   const [openModal, setOpenModal] = useState(false)
   const [isDone, setIsDone] = useState(false || localStorage.getItem(`${props.data._id}`))
@@ -66,19 +66,11 @@ const HabitCard = (props) => {
     setIsDone(true)
   }
 
-  const dltHabit = async () => {
-    const res = await axios.delete(`/api/habits/${props.data._id}`, {
-      headers: {
-        authorization: token
-      }
-    })
-    if (res.status === 200) {
-      dispatch(addhabit(res.data.habits))
-    } else {
-      notify()
-    }
-  }
 
+
+  const dltHabit = (id) => {
+    dispatch(dltFromHabit(id))
+  }
 
 
 
@@ -96,7 +88,7 @@ const HabitCard = (props) => {
           </div>
           <div className="card-btn-sec">
             <button onClick={() => addtoArchive(props.data._id, token)}>Add To Archive</button>
-            <button onClick={dltHabit}>Delete</button>
+            <button onClick={()=>dltHabit(props.data._id)}>Delete</button>
             <button onClick={() => setOpenModal(true)}>Edit</button>
             {openModal && <EditModal IsopenModal={(openModal) => setOpenModal(openModal)} data={props.data} id={props.data._id} />}
             <button onClick={completeHabitHandler}>Done</button>

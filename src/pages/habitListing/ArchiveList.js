@@ -17,7 +17,7 @@ const ArchiveList = () => {
         
         {token?<>
           <HabitNav title={"Archive Section"}/>
-        {archiveData.length < 1 || archiveData[0].length< 1 ?
+        {/* {archiveData.length < 1 || archiveData[0].length< 1 ?
               <div className='no-data-text'>
               <img src="https://theme.zdassets.com/theme_assets/643319/620072a09e8f5a5461c6048e9a089050f63892d5.gif" alt="nodata" />
                 No Habbits in Acrhive Yet
@@ -26,7 +26,7 @@ const ArchiveList = () => {
                 return <ArchiveCard key={index} data={val}/>
               })
               
-            }
+            } */}
         </>:
         <div className='blank-div'>
           <img src="https://i.pinimg.com/originals/58/22/46/58224674a4868f695d1f0e4ff61bf959.gif" alt="login" />

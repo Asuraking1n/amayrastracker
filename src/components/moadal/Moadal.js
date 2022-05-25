@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-import axios from 'axios'
+import React, { useState } from "react"
 import "./modal.css";
-import { useDispatch } from "react-redux";
-import { addhabit } from "../../redux/reducers/HabitSlice";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import {useDispatch } from "react-redux";
+import { addToHabits } from "../../redux/reducers/HabitSlice";
+
 const Moadal = (props) => {
     const dispatch = useDispatch()
     const [habitData, setHabitData] = useState({
@@ -12,28 +10,22 @@ const Moadal = (props) => {
         date: '',
         reminder: '',
     })
-    const token  = localStorage.getItem('token')
-    const notify = () => toast("Some Error Occured, refresh and retry");
     const HandelFormData = (e) => {
         let name = e.target.name
         let val = e.target.value
         setHabitData({ ...habitData, [name]: val })
     }
-    const addHabit=async(habitData,token)=>{
-        const res = await axios.post('/api/habits',{habit: habitData},{
-            headers: {
-                authorization: token 
-            }
-        })
-        if(res.status===200){
-        dispatch(addhabit(res.data.habits))
+
+    const addHabit=(habitData)=>{
+        dispatch(addToHabits(habitData))
         props.openModal(false)
-        }else{
-            notify()
-        }
+        
     }
+
+
+
     return (
-        <><ToastContainer />
+        <>
             <div className="habit-modal-cont">
                 <div className="habit-modal-sec">
                     <div className="modal-heading">New Habit</div>
@@ -52,7 +44,7 @@ const Moadal = (props) => {
 
                     <div className="modal-btn-sec">
                         <button onClick={() => props.openModal(false)}>Cancel</button>
-                        <button onClick={()=>addHabit(habitData,token)}>Save</button>
+                        <button onClick={()=>addHabit(habitData)}>Save</button>
                     </div>
                 </div>
             </div>
