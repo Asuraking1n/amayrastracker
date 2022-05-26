@@ -113,6 +113,12 @@
         width: 3rem;
         border-radius: 0;
     }
+    .card-btn-sec button:nth-child(2n){
+        display: none;
+    }
+    .card-user-name{
+        padding: 0;
+    }
 }
 
 @media (max-width: 480px)  {

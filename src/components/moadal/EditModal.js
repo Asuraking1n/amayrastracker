@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { upDateHabit } from "../../redux/reducers/HabitSlice";
 import { useDispatch } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./modal.css";
 const EditModal = (props) => {
   const dispatch = useDispatch();
@@ -24,7 +22,6 @@ const EditModal = (props) => {
   };
   return (
     <>
-      <ToastContainer />
       <div className="habit-modal-cont">
         <div className="habit-modal-sec">
           <div className="modal-heading">New Habit</div>

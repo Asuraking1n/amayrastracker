@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 export const addToHabits = createAsyncThunk('habits/addTohabits',
-    async ( habitData) => {
+    async (habitData) => {
         const res = await axios.post('/api/habits', { habit: habitData }, {
             headers: {
                 authorization: localStorage.getItem('token')
@@ -25,8 +25,7 @@ export const dltFromHabit = createAsyncThunk('habits/dltFromHabit',
 export const upDateHabit = createAsyncThunk('habits/upDateHabit',
     async (obj) => {
         const habit = obj.HabitData
-        console.log(obj,habit);
-        const res = await axios.post(`/api/habits/${obj.Id}`,{habit},{
+        const res = await axios.post(`/api/habits/${obj.Id}`, { habit }, {
             headers: {
                 authorization: localStorage.getItem('token')
             }
@@ -35,17 +34,46 @@ export const upDateHabit = createAsyncThunk('habits/upDateHabit',
     }
 )
 
+export const addToArchive = createAsyncThunk('habits/addToArchive',
+    async (id) => {
+        const res = await axios.post(`/api/archives/${id}`, {}, {
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        })
+        return res.data
+    }
+)
+
+export const dltFromArchive = createAsyncThunk('habits/dltFromArchive',
+    async (id) => {
+        const res = await axios.delete(`/api/archives/${id}`,{
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        })
+        return res.data.archives
+    }
+)
+
+
+export const reStoreFromArchive = createAsyncThunk('habits/reStoreFromArchive',
+    async (id) => {
+        const res = await axios.post(`/api/archives/restore/${id}`,{},{
+            headers: {
+                authorization: localStorage.getItem('token')
+            }
+        })
+        return res.data
+    }
+)
+
+
+
+
 export const habitSlice = createSlice({
     name: 'habitData',
     initialState: { habits: [], archives: [], status: null },
-    reducers: {
-        addhabit: (state, action) => {
-            return { ...state, habits: [action.payload] }
-        },
-        addarchive: (state, action) => {
-            return { ...state, archives: [action.payload] }
-        }
-    },
     extraReducers: {
         [addToHabits.pending]: (state) => {
             state.status = 'Loading'
@@ -75,6 +103,38 @@ export const habitSlice = createSlice({
             state.status = 'Sucess'
         },
         [upDateHabit.rejected]: (state) => {
+            state.status = 'Some Error Occured'
+        },
+        [addToArchive.pending]: (state) => {
+            state.status = 'Loading'
+        },
+        [addToArchive.fulfilled]: (state, action) => {
+            state.habits = action.payload.habits
+            state.archives = action.payload.archives
+            state.status = 'Sucess'
+        },
+        [addToArchive.rejected]: (state) => {
+            state.status = 'Some Error Occured'
+        },
+        [dltFromArchive.pending]: (state) => {
+            state.status = 'Loading'
+        },
+        [dltFromArchive.fulfilled]: (state, action) => {
+            state.archives = action.payload
+            state.status = 'Sucess'
+        },
+        [dltFromArchive.rejected]: (state) => {
+            state.status = 'Some Error Occured'
+        },
+        [reStoreFromArchive.pending]: (state) => {
+            state.status = 'Loading'
+        },
+        [reStoreFromArchive.fulfilled]: (state, action) => {
+            state.habits = action.payload.habits
+            state.archives = action.payload.archives
+            state.status = 'Sucess'
+        },
+        [reStoreFromArchive.rejected]: (state) => {
             state.status = 'Some Error Occured'
         }
     }

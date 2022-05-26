@@ -1,17 +1,13 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import './habitCard.css'
 import EditModal from '../../moadal/EditModal'
 import { useStopwatch } from 'react-timer-hook';
 import { LineChart, Line } from "recharts";
 import { useDispatch } from 'react-redux'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { addhabit,addarchive, dltFromHabit } from '../../../redux/reducers/HabitSlice'
+import {  dltFromHabit, addToArchive } from '../../../redux/reducers/HabitSlice'
 const HabitCard = (props) => {
   const [openModal, setOpenModal] = useState(false)
   const [isDone, setIsDone] = useState(false || localStorage.getItem(`${props.data._id}`))
-  const token = localStorage.getItem('token')
   const dispatch = useDispatch()
 
 
@@ -46,21 +42,13 @@ const HabitCard = (props) => {
     },
   
   ];
-  const notify = () => toast("Some Error Occured, refresh and retry");
-  const addtoArchive = async (id, token) => {
-    const res = await axios.post(`/api/archives/${id}`, {}, {
-      headers: {
-        authorization: token
-      }
-    })
 
-    if (res.status === 201) {
-      dispatch(addarchive(res.data.archives))
-      dispatch(addhabit(res.data.habits))
-    } else {
-      notify()
-    }
+
+  const addtoArchive =  (id) => {
+    dispatch(addToArchive(id))
   }
+
+
   const completeHabitHandler=()=>{
     localStorage.setItem(`${props.data._id}`,true)
     setIsDone(true)
@@ -75,7 +63,7 @@ const HabitCard = (props) => {
 
 
   return (
-    <><ToastContainer />
+    <>
       <div className="habit-cont-sec">
       <div className="done-overlay" style={{display:!isDone?'none':'block'}}> <span onClick={()=>setIsDone(false) && localStorage.setItem(`${props.data._id}`,false)}>X</span> </div>
         <div className="habit-card-sec">
@@ -87,7 +75,7 @@ const HabitCard = (props) => {
             <span>{props.data.date}</span>
           </div>
           <div className="card-btn-sec">
-            <button onClick={() => addtoArchive(props.data._id, token)}>Add To Archive</button>
+            <button onClick={() => addtoArchive(props.data._id)}>Add To Archive</button>
             <button onClick={()=>dltHabit(props.data._id)}>Delete</button>
             <button onClick={() => setOpenModal(true)}>Edit</button>
             {openModal && <EditModal IsopenModal={(openModal) => setOpenModal(openModal)} data={props.data} id={props.data._id} />}
